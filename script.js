@@ -22,8 +22,26 @@ let count = 0;
     })
 } */
 
-allBtns.forEach(addEventToBtn) //higher order method that under the hood looping through array
+allBtns.forEach(function(mybtn) {
+    mybtn.addEventListener("click", function(event){
+        console.log(event.target, "this is event target")
+        const classes = event.target.classList;
+        console.log(classes, "this are classes")
+        if (classes.contains("decrease")) {
+            count--
+        } else if (classes.contains("increase")) {
+            count ++
+        } else {
+            count = 0
+        }
+        setColorAndSpan()
+    })
+}) //higher order method that under the hood looping through array
 
+
+
+/* 
+allBtns.forEach(addEventToBtn)
 function addEventToBtn(el) {
     el.addEventListener("click", function(event){
         console.log(event.target, "this is event target")
@@ -37,9 +55,8 @@ function addEventToBtn(el) {
             count = 0
         }
         setColorAndSpan()
-        
     })
-}
+} */
 
 
 //event is an object
